@@ -1,4 +1,4 @@
-from flask import Flask,render_template
+from flask import Flask,render_template, request
 app = Flask(__name__)
           
 import ejercicios as ejers
@@ -39,6 +39,12 @@ def balanceado(cadena):
 def regex(index,cadena):
   message="Las subcadenas encontradas con el patrón especificado son:<br/>"
   return message + ejers.regex(index,cadena)
+
+
+@app.route('/static')
+def static_page():
+    return app.send_static_file('app.html')
+
 
 
 @app.errorhandler(404)
