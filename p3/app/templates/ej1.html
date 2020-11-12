@@ -1,0 +1,54 @@
+{% extends "base.html" %} {% block title %} Adivina {% endblock title %} {% block contenido %}
+<h4 class="text-center">Adivina el número aleatorio entre 1 y 100 en 10 intentos </h4>
+
+
+<!-- Ha acertado el número -->
+
+{% if resultado==0 %}
+<p style="font-weight: bold; font-size: large; color:springgreen">Enhorabuena!! Has acertado el número!</p>
+<form action="{{ url_for('adivina') }}" method="post">
+    <div class="text-center">
+        <button type="submit" class="btn btn-primary" id="nuevo" name="nuevo">Jugar de nuevo</button>
+    </div>
+</form>
+
+<!-- Se supera el número de intentos  -->
+{% elif resultado==3 %}
+<p style="font-weight: bold; font-size: large;color:coral">Lo sentimos, has superado el número de intentos</p>
+<form action="{{ url_for('adivina') }}" method="post">
+    <div class="text-center">
+        <button type="submit" class="btn btn-primary" id="nuevo" name="nuevo">Jugar de nuevo</button>
+    </div>
+</form>
+
+<!-- Es la primera vez que te metes en el juego  -->
+{% elif resultado==-2 %}
+<form action="{{ url_for('adivina') }}" method="post">
+    <div class="text-center">
+        <button type="submit" class="btn btn-primary" id="empezar" name="empezar">Empieza el juego!</button>
+    </div>
+</form>
+{% else %}
+<p> Llevas {{ intentos }} intentos de 10 </p>
+<form action="{{ url_for('adivina') }}" method="post">
+    <div class="form-group">
+        <label for="numero">Introduce un número entre 1 y 100:</label>
+        <input type="number" class="form-control" id="numero" name="numero" placeholder="000">
+    </div>
+    <div class="text-center mb-3">
+        <button type="submit" class="btn btn-primary" id="send" name="send">Enviar</button>
+    </div>
+</form>
+{% endif %} {% if resultado==-3 %}
+<div class=" alert alert-danger " role="alert">
+    El número introducido no está en el rango esperado
+</div>
+{% endif %} {% if resultado==1 %}
+<div class=" alert alert-secondary " role="alert">
+    El número buscado es mayor que el introducido. Inténtelo de nuevo
+</div>
+{% endif %} {% if resultado==2 %}
+<div class=" alert alert-secondary " role="alert">
+    El número buscado es menor que el introducido. Inténtelo de nuevo
+</div>
+{% endif %} {% endblock %}

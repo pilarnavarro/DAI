@@ -1,0 +1,16 @@
+{%extends "base.html" %} {%block title %} Balanceado {% endblock %} {%block contenido %}
+<p style="font-weight: bold;"> Comprueba si tu cadena de corchetes está balanceada</p>
+{% if mostrar %} {% if result %}
+<p style="color:rgb(107, 35, 223);">La cadena está balanceada</p>
+{% else %}
+<p style="color:rgb(107, 35, 223);">La cadena no está balanceada</p> {% endif %}{% endif %}
+<form action="{{ url_for( 'balanceado') }}" method="post">
+    <div class="form-group ">
+        <label for="cadena">Introduce una cadena de corchetes:</label>
+        <input type="text" class="form-control " id="cadena" name="cadena" placeholder="[[]]" required>
+    </div>
+    <div class=" text-center ">
+        <button type="submit" class="btn btn-primary" id="send" name="send">Enviar</button>
+    </div>
+</form>
+{% endblock %}
