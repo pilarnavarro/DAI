@@ -1,0 +1,27 @@
+{%extends "base.html" %} {%block title %} Expresiones regulares {% endblock %} {%block contenido %}
+<p style="font-weight: bold;">Buscar algunos patrones en cadenas</p>
+{% if mostrar %}
+<p style="color:rgb(107, 35, 223);">Las subcadenas encontradas con el patrón especificado son:<br/> {{ salida }}</p>
+{% endif %}
+<form action="{{ url_for('regex') }}" method="post">
+    <div class="form-group">
+        <label for="texto">Introduce el texto en el que buscar los patrones:</label>
+        <input type="text" class="form-control " id="texto" name="texto" placeholder="Texto" required>
+    </div>
+    <div class="container-fluid">
+        <p> ¿Qué patrones quieres buscar? </p>
+        <div class="row">
+            <div class="col-md-auto my-auto">
+                <button type="submit" class="btn btn-primary text-center" id="email" name="email">E-mail</button>
+            </div>
+
+            <div class="col-md-auto my-auto">
+                <button type="submit" class="btn btn-primary text-center" id="tarjeta" name="tarjeta">Tarjeta de crédito</button>
+            </div>
+
+            <div class="col-md-auto my-auto">
+                <button type="submit" class="btn btn-primary text-center" id="palabra" name="palabra">Palabra seguida de espacio<br/>y una mayúscula </button>
+            </div>
+        </div>
+</form>
+{% endblock %}

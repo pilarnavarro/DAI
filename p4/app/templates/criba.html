@@ -1,0 +1,15 @@
+{%extends "base.html" %} {%block title %} Criba {% endblock %} {%block contenido %}
+<p style="font-weight: bold;"> Bienvenido a la Criba de Eratóstenes </p>
+{% if mostrar %}
+<p style="color:rgb(107, 35, 223);">Los número primos menores que {{ n }} son {{ primos }} </p>
+{% endif %}
+<form action="{{ url_for( 'criba') }}" method="post">
+    <div class="form-group">
+        <label for="numero">Introduce un número natural:</label>
+        <input type="number" class="form-control" id="numero" name="numero" placeholder="00000" required>
+    </div>
+    <div class=" text-center ">
+        <button type="submit" class="btn btn-primary" id="send" name="send">Enviar</button>
+    </div>
+</form>
+{% endblock %}
