@@ -1,0 +1,59 @@
+{%extends "base.html" %} {%block title %} Friends {% endblock %} {%block contenido %}
+<h1 class="text-center"> Base de datos de episodios de la serie Friends</h1>
+
+<form action="{{ url_for('mongo') }}" method="post">
+    <div class="container-fluid">
+        <p> ¿Qué operación deseas llevar a cabo sobre la base de datos? </p>
+        <div class="row mb-2">
+            <div class="col-md-auto my-2">
+                <button type="submit" class="btn btn-primary text-center" id="buscar" name="buscar">Buscar / Consultar</button>
+            </div>
+
+            <div class="col-md-auto my-2">
+                <button type="submit" class="btn btn-primary text-center" id="nuevo" name="nuevo">Insertar entrada</button>
+            </div>
+
+            <div class="col-md-auto my-2">
+                <button type="submit" class="btn btn-primary text-center" id="mod" name="mod">Modificar entrada</button>
+            </div>
+
+            <div class="col-md-auto my-2">
+                <button type="submit" class="btn btn-primary text-center" id="borrar" name="borrar">Eliminar entrada</button>
+            </div>
+        </div>
+</form>
+<div class="table-responsive mb-5">
+    <table class="table table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">ID</th>
+                <th scope="col">URL</th>
+                <th scope="col">Season</th>
+                <th scope="col">Number</th>
+                <th scope="col">Airdate</th>
+                <th scope="col">Airtime</th>
+                <th scope="col">Airstamp</th>
+                <th scope="col">Runtime</th>
+                <th scope="col">Summary</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for episodio in episodios %}
+            <tr>
+                <th scope="row">{{ episodio["name"] }}</th>
+                <td>{{ episodio["id"] }}</td>
+                <td><a href='{{ episodio["url"] }}'>{{ episodio["url"] }}</a></td>
+                <td>{{ episodio["season"] }}</td>
+                <td>{{ episodio["number"] }}</td>
+                <td>{{ episodio["airdate"] }}</td>
+                <td>{{ episodio["airtime"] }}</td>
+                <td>{{ episodio["airstamp"] }}</td>
+                <td>{{ episodio["runtime"] }}</td>
+                <td>{{ episodio["summary"] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

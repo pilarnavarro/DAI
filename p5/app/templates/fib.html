@@ -1,0 +1,15 @@
+{%extends "base.html" %} {%block title %} Fibonacci {% endblock %} {%block contenido %}
+<p style="font-weight: bold;"> Espacio Fibonacci </p>
+{% if mostrar %}
+<p style="color:rgb(107, 35, 223);"> El número que ocupa la posición {{ n }} en la sucesión de fibonacci es {{ salida }}</p>
+{% endif %}
+<form action="{{ url_for( 'fibonacci') }}" method="post">
+    <div class="form-group">
+        <label for="numero">Introduce un número natural:</label>
+        <input type="number" class="form-control" id="numero" name="numero" placeholder="00000" required>
+    </div>
+    <div class=" text-center ">
+        <button type="submit" class="btn btn-primary" id="send" name="send">Enviar</button>
+    </div>
+</form>
+{% endblock %}
