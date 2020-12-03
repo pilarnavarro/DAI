@@ -426,39 +426,3 @@ def show_figure():
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template('404.html'), 404
-
-
-# @app.route('/adivina_init')
-# def adivina_init():
-#   global n,intentos,resultado
-#   n=random.randint(1,100)
-#   resultado=-1
-#   intentos=0
-#   return render_template('ej1.html',intentos=intentos,resultado=resultado)
-
-# @app.route('/adivina', methods=['GET', 'POST'])
-# def adivina():
-#   global n,intentos,resultado
-#   if request.method == 'POST':
-#     if "nuevo" in request.form:
-#       return redirect(url_for('adivina_init'))
-#     else:
-#       guess=request.form['numero']
-#       guess=int(guess)
-#       intentos=intentos+1
-
-#       if n==guess:
-#         resultado=0
-#       else: 
-#         if intentos<10:
-#           if guess>=1 and guess<=100:
-#             if guess<n:
-#               resultado=1
-#             else:
-#               resultado=2
-#           else:
-#             intentos=intentos-1
-#             resultado=-2
-#         else:
-#           resultado=3
-#   return render_template('ej1.html',intentos=intentos,resultado=resultado)
