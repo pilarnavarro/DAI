@@ -29,12 +29,14 @@ def fibonacci(input,output):
 @app.route('/balanceo_corchetes/<cadena>')
 def balanceado(cadena):
     if cadena==None:
-        cadena="aleatoria" 
+        cad="aleatoria"
+    else:
+      cad=cadena
     
     if ejers.balanceado(cadena):         
-      return "La cadena " + cadena + " está balanceada"
+      return "La cadena " + cad + " está balanceada"
     else:
-      return "La cadena " + cadena + " no está balanceada"
+      return "La cadena " + cad + " no está balanceada"
 
 @app.route('/expresion_regular/<int:index>/<cadena>')
 def regex(index,cadena):

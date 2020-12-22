@@ -1,3 +1,26 @@
+#Ejercicio 1
+import random
+
+def adivina():
+    n=random.randint(1,100)
+    print("Introduzca un número entre 1 y 100:")
+    guess=int(input())
+    intentos=1
+    while intentos<10 and guess!=n:
+        if guess<n:
+            print("El número buscado es mayor que el introducido. Inténtelo de nuevo:")
+            guess=int(input())
+        else:
+            print("El número buscado es menor que el introducido. Inténtelo de nuevo:")
+            guess=int(input())
+        intentos=intentos+1
+    if guess==n:
+        print("Enhorabuena! Ha acertado el número!")
+    else:
+        print("Lo sentimos, ha superado el número máximo de intentos permitidos.")
+
+
+
 #Ejercicio2
 
 def ordena(matriz,algorithm):
@@ -115,7 +138,7 @@ import re
     Si el índice es 1 estamos en el primero de los casos pedidos
     en el ejercicio (palabra seguida de espacio y letra mayúscula).
     Si index=2 entonces buscamos direcciones de correo electrónico válidas
-    Si inde=3 buscamos números de tarjetas de crédito
+    Si index=3 buscamos números de tarjetas de crédito
 '''
 def regex(index,cadena):
     if index==1:
