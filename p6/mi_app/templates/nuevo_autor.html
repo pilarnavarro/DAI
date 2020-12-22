@@ -1,0 +1,15 @@
+{% extends 'base.html' %} {%block title %} Autores {% endblock %} {% load crispy_forms_tags %}{% block contenido %} {% if error %}
+<div class="alert alert-danger" role="alert">
+    <p class=error><strong>Error:</strong> {{ error }}
+</div> {% endif %}
+<div class="row">
+    <div class="col-md mx-auto my-5">
+        <div class="text-center">
+            <h3>Nuevo Autor</h3>
+        </div>
+        <form method="POST">{% csrf_token %} {{ form|crispy }}
+            <button type="submit" class="btn btn-dark text-center">Guardar</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

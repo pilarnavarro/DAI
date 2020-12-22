@@ -1,0 +1,36 @@
+{% extends "base.html" %} {%block title %} Prestamos {% endblock %} {%block contenido %}
+<h3 class="text-center my-4 mx-5"> Base de datos de los préstamos realizados por nuestra biblioteca </h3>
+
+
+<div class="container-fluid">
+    <a class="btn btn-primary text-center" href="{% url 'nuevo_prestamo' %}">Insertar un nuevo prestamo</a>
+</div>
+
+<div class="table-responsive mx-3 my-5">
+    <table class="table table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Libro</th>
+                <th scope="col">Fecha del préstamo</th>
+                <th scope="col">Usuario</th>
+                <th scope="col">ID</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+
+            </tr>
+        </thead>
+        <tbody>
+            {% for prestamo in prestamos %}
+            <tr>
+                <th scope="row">{{ prestamo.libro }}</th>
+                <td>{{ prestamo.fecha }}</td>
+                <td>{{ prestamo.usuario }}</td>
+                <td>{{ prestamo.id }}</td>
+                <td><a class="btn btn btn-dark text-center " href="{% url 'editar_prestamo' prestamo.id %}">Editar</a></td>
+                <td><a class="btn btn btn-danger text-center " href="{% url 'eliminar_prestamo' prestamo.id %}">Eliminar</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
