@@ -1,0 +1,20 @@
+{% extends 'base.html' %} {%block title %} Prestamos {% endblock %} {% block contenido %}{% if error %}
+<div class="alert alert-danger" role="alert">
+    <p class=error><strong>Error:</strong> {{ error }}
+</div> {% endif %}
+
+<form action="{% url 'eliminar_prestamo' prestamo.id %}" method="POST" class="my-5">{% csrf_token %}
+    <div class="container-fluid">
+        <p> ¿Estás seguro que quieres eliminar el prestamo {{ prestamo }}? </p>
+        <div class="row mb-2">
+            <div class="col-md-auto my-2">
+                <button type="submit" class="btn btn-danger text-center" name="eliminar">Confirmar</button>
+            </div>
+
+            <div class="col-md-auto my-2">
+                <a class="btn btn btn-dark text-center " href="{% url 'prestamos' %} ">Cancelar</a>
+            </div>
+        </div>
+    </div>
+</form>
+{% endblock %}
