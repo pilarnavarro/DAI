@@ -1,0 +1,23 @@
+{%extends "base.html" %} {%block title %} Ordenación {% endblock %} {%block contenido %}
+<p style="font-weight: bold;"> Ordena una lista con distintos algoritmos</p>
+{% if mostrar %}
+<p style="color:rgb(107, 35, 223);"> {{ salida }}</p>
+{% endif %}
+<form action="{{ url_for( 'ordena') }}" method="post">
+    <div class="form-group ">
+        <label for="lista">Introduce una lista de números a ordenar, separados por comas:</label>
+        <input type="text" class="form-control " id="lista" name="lista" placeholder="0,1,2,3,4" required>
+    </div>
+    <div class="container-fluid">
+        <p> ¿Con qué algoritmo te gustaría ordenar la lista? </p>
+        <div class="row">
+            <div class="col-md-auto my-auto">
+                <button type="submit" class="btn btn-primary text-center" id="burbuja" name="burbuja">Burbuja</button>
+            </div>
+
+            <div class="col-md-auto my-auto">
+                <button type="submit" class="btn btn-primary text-center" id="merge" name="merge">Merge Sort</button>
+            </div>
+        </div>
+</form>
+{% endblock %}
