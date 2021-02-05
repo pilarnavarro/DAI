@@ -1,0 +1,93 @@
+{%extends "base.html" %} {%block title %} Friends {% endblock %} {%block contenido %}
+<h1 class="text-center">Base de datos de episodios de la serie Friends </h1>
+
+<div class="text-center">
+    <h3>Buscar episodios con las características deseadas</h3>
+</div>
+<form action="{{ url_for('mongo_buscar') }}" method="post">
+    <p>Introduce las características deseadas en los episodios a buscar. En los campos que no son numéricos pueden usarse expresiones regulares. </p>
+
+    <div class="form-group">
+        <label for="id">ID</label>
+        <input type="text" class="form-control" id="id" name="id" placeholder="40000.0">
+    </div>
+
+    <div class="form-group">
+        <label for="url">URL</label>
+        <input type="text" class="form-control" id="url" name="url" placeholder="http://www.tvmaze.com/episodes/00000/ejemplo">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="Name">
+        </div>
+        <div class="form-group">
+            <label for="season">Season</label>
+            <input type="number" class="form-control" id="season" name="season" placeholder="00">
+        </div>
+        <div class="form-group">
+            <label for="number">Number</label>
+            <input type="number" class="form-control" id="number" name="number" placeholder="00">
+        </div>
+        <div class="form-group">
+            <label for="airdate">Airdate</label>
+            <input type="text" class="form-control" id="airdate" name="airdate" placeholder="yyyy-mm-dd">
+        </div>
+        <div class="form-group">
+            <label for="airtime">Airtime</label>
+            <input type="text" class="form-control" id="airtime" name="airtime" placeholder="00:00">
+        </div>
+        <div class="form-group">
+            <label for="airstamp">Airstamp</label>
+            <input type="text" class="form-control" id="airstamp" name="airstamp" placeholder="yyyy-mm-ddT00:00:00-00:00">
+        </div>
+        <div class="form-group">
+            <label for="runtime">Runtime</label>
+            <input type="text" class="form-control" id="runtime" name="runtime" placeholder="00.0">
+        </div>
+        <div class="form-group">
+            <label for="summary">Summary</label>
+            <input type="text" class="form-control" id="summary" name="summary" placeholder="Summary">
+        </div>
+        <div class="form-group">
+            <div class="text-center mt-3 mb-5">
+                <button type="submit" class="btn btn-primary" id="consultar" name="consultar">Buscar</button>
+            </div>
+        </div>
+</form>
+
+{% if mostrar %}
+<p style="color:rgb(107, 35, 223);">Los episodios encontrados con las características introducidas son los siguientes: </p>
+<div class="table-responsive mb-5">
+    <table class="table table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">ID</th>
+                <th scope="col">URL</th>
+                <th scope="col">Season</th>
+                <th scope="col">Number</th>
+                <th scope="col">Airdate</th>
+                <th scope="col">Airtime</th>
+                <th scope="col">Airstamp</th>
+                <th scope="col">Runtime</th>
+                <th scope="col">Summary</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for episodio in episodios %}
+            <tr>
+                <th scope="row">{{ episodio["name"] }}</th>
+                <td>{{ episodio["id"] }}</td>
+                <td><a href='{{ episodio["url"] }}'>{{ episodio["url"] }}</a></td>
+                <td>{{ episodio["season"] }}</td>
+                <td>{{ episodio["number"] }}</td>
+                <td>{{ episodio["airdate"] }}</td>
+                <td>{{ episodio["airtime"] }}</td>
+                <td>{{ episodio["airstamp"] }}</td>
+                <td>{{ episodio["runtime"] }}</td>
+                <td>{{ episodio["summary"] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endif %} {% endblock %}

@@ -1,0 +1,13 @@
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    background-color: #c6e4e1;
+}
+
+.modo_nocturno {
+    color: white;
+    background-color: rgb(35, 80, 138)
+}

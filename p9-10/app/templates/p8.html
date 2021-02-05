@@ -1,0 +1,56 @@
+{%extends "base.html" %} {%block title %} Práctica 8 {% endblock %} {%block contenido %}
+
+<h1 class="text-center"> Base de datos de episodios de la serie Friends</h1>
+<h3 class="text-center mb-5"> Búsqueda de episodios</h3>
+<div class="container-fluid">
+    <div class="row mb-2">
+        <div class="col-md-auto my-auto">
+            <p>Nombre</p>
+            <input class="center" type="text" id="buscar_nombre">
+        </div>
+        <div class="col-md-auto my-auto">
+            <p>Contenido del resumen</p>
+            <input class="center" type="text" id="buscar_resumen">
+        </div>
+        <div class="col-md-auto my-auto">
+            <p>Fecha de estreno</p>
+            <input class="center mb-2" type="text" id="buscar_estreno">
+        </div>
+    </div>
+    <div class="row mb-2">
+        <div class="col-md-auto my-auto">
+            <p>Temporada</p>
+            <input class="center" type="text" id="buscar_season">
+        </div>
+        <div class="col-md-auto my-auto">
+            <p>Número de episodio</p>
+            <input class="center" type="text" id="buscar_number">
+        </div>
+
+    </div>
+</div>
+<div class="table-responsive mb-5">
+    <table class="table table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">ID</th>
+                <th scope="col">URL</th>
+                <th scope="col">Season</th>
+                <th scope="col">Number</th>
+                <th scope="col">Airdate</th>
+                <th scope="col">Airtime</th>
+                <th scope="col">Airstamp</th>
+                <th scope="col">Runtime</th>
+                <th scope="col">Summary</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}{% block scripts %}
+<script src="/static/p8.js"></script>
+{% endblock %}

@@ -1,0 +1,21 @@
+{%extends "base.html" %} {%block title %} Bar chart {% endblock %} {%block contenido %}
+
+
+<h1 class="text-center"> Base de datos de episodios de la serie Friends</h1>
+<h3 class="text-center mb-5"> Gráficos con la duración de cada episodio </h3>
+
+<div id="bar_chart" class="container-fluid mb-5 "></div>
+<div id="bar_chart1" class="container-fluid mb-5 "></div>
+<div id="bar_chart2" class="container-fluid mb-5 "></div>
+<div id="bar_chart3" class="container-fluid mb-5 "></div>
+<div id="bar_chart4" class="container-fluid mb-5 "></div>
+
+{% endblock %}{% block scripts %}
+<script src="https://code.highcharts.com/highcharts.js "></script>
+<script src="https://code.highcharts.com/modules/series-label.js "></script>
+<script src="https://code.highcharts.com/modules/exporting.js "></script>
+<script src="https://code.highcharts.com/modules/export-data.js "></script>
+<script src="https://code.highcharts.com/modules/accessibility.js "></script>
+<script src="/static/bar_chart.js "></script>
+
+{% endblock %}
